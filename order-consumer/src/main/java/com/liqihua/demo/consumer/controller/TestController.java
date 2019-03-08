@@ -1,5 +1,6 @@
 package com.liqihua.demo.consumer.controller;
 
+import com.liqihua.demo.dto.OrderDTO;
 import com.liqihua.demo.service.OrderFeignApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,10 @@ public class TestController {
         return orderFeignApi.list(aa);
     }
 
+    @RequestMapping("/getOrder")
+    public OrderDTO getOrder(Integer id){
+        return orderFeignApi.getOrder(id);
+    }
 
 
 }
