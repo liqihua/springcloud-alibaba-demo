@@ -1,0 +1,11 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: order-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.16.6.35:8841,172.16.6.35:8842,172.16.6.35:8843
+
+
