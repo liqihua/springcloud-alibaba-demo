@@ -12,6 +12,7 @@
         <module>order-provider</module>
         <module>order-consumer</module>
         <module>order-provider-api</module>
+        <module>spring-cloud-gateway-demo</module>
     </modules>
 
 
