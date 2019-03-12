@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "order-provider")
 public interface OrderFeignApi {
 
-    @RequestMapping("/orderController/list")
+    @RequestMapping("/myOrder/orderController/list")
     String list(@RequestParam("aa") String aa);
 
-    @RequestMapping("/orderController/getOrder")
+    @RequestMapping("/myOrder/orderController/getOrder")
     OrderDTO getOrder(@RequestParam("id") Integer id);
 }

@@ -21,7 +21,7 @@ public class TestController {
 
     @RequestMapping("/listOrder")
     public String listOrder(String aa){
-        return restTemplate.getForObject("http://order-provider/orderController/list?aa="+aa,String.class);
+        return restTemplate.getForObject("http://order-provider/myOrder/orderController/list?aa="+aa,String.class);
     }
 
 
