@@ -1,5 +1,6 @@
 package com.liqihua.demo.service;
 
+import com.liqihua.demo.config.FeignConfiguration;
 import com.liqihua.demo.dto.OrderDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author liqihua
  * @since 2019/3/7
  */
-@FeignClient(name = "order-provider")
+@FeignClient(name = "order-provider",configuration = FeignConfiguration.class)
 public interface OrderFeignApi {
 
     @RequestMapping("/myOrder/orderController/list")

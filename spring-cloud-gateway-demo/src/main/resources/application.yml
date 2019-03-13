@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        serverAddr: 172.16.6.35:8841,172.16.6.36:8842,172.16.6.41:8843
+        serverAddr: 172.16.6.35:8441,172.16.6.36:8442,172.16.6.41:8443
     gateway:
       discovery:
         locator:

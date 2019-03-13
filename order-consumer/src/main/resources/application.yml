@@ -6,6 +6,12 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 172.16.6.35:8841,172.16.6.36:8842,172.16.6.41:8843
+        server-addr: 172.16.6.35:8441,172.16.6.36:8442,172.16.6.41:8443
+
+logging:
+  level:
+    com.liqihua.demo.service.OrderFeignApi: debug
+
+
 
 
