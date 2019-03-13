@@ -1,5 +1,8 @@
 package com.liqihua.demo.gateway;
 
+import com.liqihua.demo.gateway.gatewayfilter.TestFilter;
+import com.liqihua.demo.gateway.globalfilter.ParamFilter;
+import com.liqihua.demo.gateway.globalfilter.TokenFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -20,13 +23,30 @@ public class RunGateway {
     }
 
 
+    /**
+     * 这部分已移动到配置文件application.yml中
+     * @return
+     */
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder){
         return builder.routes()
-                .route("test1",r -> r.path("/testController/**").uri("http://localhost:9100")) // http://网关地址:网关端口/testController/aa/bb -> http://localhost:9100/testController/aa/bb
+                //.route("test1",r -> r.path("/testController/**").uri("http://localhost:9100")) // http://网关地址:网关端口/testController/aa/bb -> http://localhost:9100/testController/aa/bb
                 .route("test2",r -> r.path("/myOrder/**").uri("lb://order-provider")) // http://网关地址:网关端口/myOrder/aa/bb/cc -> http://order-provider/myOrder/aa/bb/cc
+                .route("aabbcc",r -> r.path("/testController/**").uri("http://localhost:9100").filters(new TestFilter()))
                 .build();
 
+    }
+
+
+
+    @Bean
+    public TokenFilter tokenFilter() {
+        return new TokenFilter();
+    }
+
+    @Bean
+    public ParamFilter paramFilter() {
+        return new ParamFilter();
     }
 
 }

@@ -7,3 +7,17 @@ spring:
     nacos:
       discovery:
         serverAddr: 172.16.6.35:8841,172.16.6.35:8842,172.16.6.35:8843
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+#      routes:
+#      - id: to_myorder
+#        uri: lb://order-provider
+#        predicates:
+#        - Path=/myOrder/**
+#      - id: test1
+#        uri: http://localhost:9100
+#        predicates:
+#        - Path=/testController/**
+
