@@ -10,14 +10,28 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
-#      routes:
-#      - id: to_myorder
-#        uri: lb://order-provider
-#        predicates:
-#        - Path=/myOrder/**
-#      - id: test1
-#        uri: http://localhost:9100
-#        predicates:
-#        - Path=/testController/**
+          enabled: true #启用服务发现
+      routes:
+      - id: to_myorder
+        uri: lb://order-provider
+        predicates:
+        - Path=/myOrder/** # http://网关地址:网关端口/myOrder/aa/bb/cc -> http://order-provider/myOrder/aa/bb/cc
+      - id: test1
+        uri: http://localhost:9100
+        predicates:
+        - Path=/testController/** # http://网关地址:网关端口/testController/aa/bb -> http://localhost:9100/testController/aa/bb
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率
+            redis-rate-limiter.burstCapacity: 5 #令牌桶总容量
+            key-resolver: "#{@uriKeyResolver}" #限流的键的解析器的 Bean 对象的名字，从 Spring 容器中获取 Bean 对象
+
+#限流过滤器RequestRateLimiter需要使用redis
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+
+
 
