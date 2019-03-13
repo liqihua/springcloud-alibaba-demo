@@ -3,11 +3,16 @@ package com.liqihua.demo.gateway;
 import com.liqihua.demo.gateway.gatewayfilter.TestFilter;
 import com.liqihua.demo.gateway.globalfilter.ParamFilter;
 import com.liqihua.demo.gateway.globalfilter.TokenFilter;
+import com.liqihua.demo.service.OrderFeignApi;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -16,7 +21,12 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients("com.liqihua.*")
 public class RunGateway {
+    public static final Logger LOG = LoggerFactory.getLogger(RunGateway.class);
+
+    @Autowired
+    private OrderFeignApi orderFeignApi;
 
     public static void main(String[] args) {
         SpringApplication.run(RunGateway.class, args);
@@ -48,5 +58,7 @@ public class RunGateway {
     public ParamFilter paramFilter() {
         return new ParamFilter();
     }
+
+
 
 }

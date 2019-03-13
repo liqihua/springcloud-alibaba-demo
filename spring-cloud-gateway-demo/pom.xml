@@ -24,6 +24,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.liqihua.demo</groupId>
+            <artifactId>order-provider-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+
     </dependencies>
 
 
