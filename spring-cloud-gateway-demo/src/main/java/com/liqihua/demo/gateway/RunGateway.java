@@ -67,7 +67,7 @@ public class RunGateway {
     }
 
     /**
-     * 根据URI限流
+     * 根据URI限流，还能按照自己项目情况，调整为根据hostname、header值等等
      * @return
      */
     @Bean
